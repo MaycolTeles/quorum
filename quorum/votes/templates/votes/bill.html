@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        .btn {
+            display: block;
+            width: 150px;
+            margin: 0 auto;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-transform: uppercase;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    <div class="container">
+        <h1>Bill Details</h1>
+        <div class="bill-details">
+            <p><strong>ID:</strong> {{ bill.id }}</p>
+            <p><strong>Title:</strong> {{ bill.title }}</p>
+            <p><strong>Primary Sponsor:</strong> {{ bill.primary_sponsor }}</p>
+        </div>
+
+        <h2>Supporters ({{ bill.supporters_amount }}) </h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for supporter in bill.supporters_result %}
+                    <tr>
+                        <td><a href="{% url 'legislator' supporter.legislator.id %}">{{ supporter.legislator.id }}</a></td>
+                        <td>{{ supporter.legislator.name }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <h2>Opposers ({{ bill.opposers_amount }})</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for opposer in bill.opposers_result %}
+                    <tr>
+                        <td><a href="{% url 'legislator' opposer.legislator.id %}">{{ opposer.legislator.id }}</a></td>
+                        <td>{{ opposer.legislator.name }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        <a href="{% url 'bills' %}" class="btn">Back to Bills</a>
+    </div>
+</body>
+</html>
