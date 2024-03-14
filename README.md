@@ -2,6 +2,8 @@
 
 This repository contains the solution for the Quorum Coding Challenge: Legislative Data.
 
+To see the questions and the answers, please check the [QUESTIONS.md](QUESTIONS.md) file.
+
 <h4 align="left"> 
 	Authors :pencil2:
 </h4>
@@ -35,7 +37,7 @@ This repository contains the solution for the Quorum Coding Challenge: Legislati
 First off, in order to get a copy of the project to run/test it, clone the repository into a folder on your machine:
 
 ```
-git clone 
+git clone git@github.com:MaycolTeles/quorum.git
 ```
 
 
