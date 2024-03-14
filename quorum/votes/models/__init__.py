@@ -2,7 +2,7 @@
 from .bill import Bill
 from .person import Person
 from .vote import Vote
-from .vote_result import VoteResult
+from .vote_result import VoteResult, VoteTypeChoices
 
 
 __all__ = [
@@ -10,4 +10,5 @@ __all__ = [
     'Person',
     'Vote',
     'VoteResult',
+    'VoteTypeChoices',
 ]

@@ -17,6 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from votes.views import bill, bills, index, legislator, legislators
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', index, name='index'),
+    path('bills/', bills, name='bills'),
+    path('bills/<int:bill_id>/', bill, name='bill'),
+    path('legislators/', legislators, name='legislators'),
+    path('legislators/<int:legislator_id>/', legislator, name='legislator'),
 ]
